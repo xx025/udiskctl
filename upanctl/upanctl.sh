@@ -1,6 +1,8 @@
 #!/bin/bash
 # upanctl command: Manage global switch and allowlist for USB drives
 
+VERSION="1.0.0"
+
 source /usr/local/bin/upanctl_common.sh
 
 ENABLE_FILE="/etc/upanctl/enable"
@@ -41,6 +43,7 @@ case "$1" in
         echo "All allowed USB drives have been cleared"
         ;;
     *)
+        echo "upanctl version $VERSION"
         echo "Usage: upanctl {ok|unok|add|clean}"
         ;;
 esac
