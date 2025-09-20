@@ -7,6 +7,11 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 echo "Installing udiskctl to /usr/local/bin/ ..."
+
+mkdir -p /etc/udiskctl
+touch /etc/udiskctl/whitelist
+touch /etc/udiskctl/enable
+
 echo "install udiskctl.sh "
 install -m 755 udiskctl/udiskctl.sh /usr/local/bin/udiskctl
 echo "install udiskctl_udev.sh "
