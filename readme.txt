@@ -8,3 +8,11 @@ Main Features:
 - Suitable for environments with high data security requirements, such as enterprises, schools, and laboratories
 
 For installation and usage instructions, please refer to the project scripts and comments.
+
+
+Example usage:
+
+sudo upanctl ok      # Globally enable USB storage
+sudo upanctl unok    # Globally disable USB storage
+sudo upanctl add     # Allow currently inserted USB drives
+sudo upanctl clean   # Clear all allowed USB drives
