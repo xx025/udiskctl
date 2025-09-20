@@ -11,7 +11,16 @@ echo "Installing udiskctl to /usr/local/bin/ ..."
 mkdir -p /etc/udiskctl
 touch /etc/udiskctl/whitelist
 touch /etc/udiskctl/enable
+echo "Control file and whitelist created."
 
+# 2️⃣ Create udev rule
+cat <<EOF >/etc/udev/rules.d/99-udiskctl.rules
+ACTION=="add", KERNEL=="sd?", SUBSYSTEMS=="usb", RUN+="/usr/local/bin/udiskctl_udev.sh %k"
+EOF
+echo "udev rule created."
+
+
+echo "Installing upanctl scripts..."
 echo "install udiskctl.sh "
 install -m 755 udiskctl/udiskctl.sh /usr/local/bin/udiskctl
 echo "install udiskctl_udev.sh "
