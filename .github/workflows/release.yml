@@ -1,4 +1,4 @@
-name: Build & Release upanctl Installer
+name: Build & Release udiskctl Installer
 
 on:
   push:
@@ -20,19 +20,19 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y makeself
 
       - name: Build installer
-        run: bash tools/pack_upanctl.sh
+        run: bash tools/pack_udiskctl.sh
 
       - name: Extract version
         id: get_version
         run: |
-          VERSION=$(grep -Po '(?<=^VERSION=")[^\"]*' upanctl/upanctl.sh)
+          VERSION=$(grep -Po '(?<=^VERSION=")[^\"]*' udiskctl/udiskctl.sh)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Create or Update Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ steps.get_version.outputs.version }}
-          name: upanctl installer ${{ steps.get_version.outputs.version }}
-          files: upanctl_installer.run
+          name: udiskctl installer ${{ steps.get_version.outputs.version }}
+          files: udiskctl_installer.run
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

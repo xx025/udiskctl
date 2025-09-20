@@ -6,11 +6,11 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-echo "Installing upanctl to /usr/local/bin/ ..."
-echo "install upanctl.sh "
-install -m 755 upanctl/upanctl.sh /usr/local/bin/upanctl
-echo "install upanctl_udev.sh "
-install -m 755 upanctl/upanctl_udev.sh /usr/local/bin/upanctl_udev.sh
-echo "install upanctl_common.sh "
-install -m 755 upanctl/upanctl_common.sh /usr/local/bin/upanctl_common.sh
-echo "upanctl install to /usr/local/bin/ complete."
+echo "Installing udiskctl to /usr/local/bin/ ..."
+echo "install udiskctl.sh "
+install -m 755 udiskctl/udiskctl.sh /usr/local/bin/udiskctl
+echo "install udiskctl_udev.sh "
+install -m 755 udiskctl/udiskctl_udev.sh /usr/local/bin/udiskctl_udev.sh
+echo "install udiskctl_common.sh "
+install -m 755 udiskctl/udiskctl_common.sh /usr/local/bin/udiskctl_common.sh
+echo "udiskctl install to /usr/local/bin/ complete."

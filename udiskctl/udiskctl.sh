@@ -1,12 +1,12 @@
 #!/bin/bash
-# upanctl command: Manage global switch and allowlist for USB drives
+# udiskctl command: Manage global switch and allowlist for USB drives
 
-VERSION="1.0.0"
+VERSION="1.0.1"
 
-source /usr/local/bin/upanctl_common.sh
+source /usr/local/bin/udiskctl_common.sh
 
-ENABLE_FILE="/etc/upanctl/enable"
-WHITELIST="/etc/upanctl/whitelist"
+ENABLE_FILE="/etc/udiskctl/enable"
+WHITELIST="/etc/udiskctl/whitelist"
 
 case "$1" in
     ok)
@@ -21,7 +21,7 @@ case "$1" in
         # Get currently inserted USB devices
         # If currently in global disable state, prompt user to enable global USB storage first before adding to allowlist
         if [ ! -f "$ENABLE_FILE" ]; then
-            echo "⚠️ USB storage is currently globally disabled. Please run 'upanctl ok' to enable global USB storage before adding to allowlist."
+            echo "⚠️ USB storage is currently globally disabled. Please run 'udiskctl ok' to enable global USB storage before adding to allowlist."
             exit 1
         fi
         for dev in $(lsblk -ndo NAME,TRAN | awk '$2=="usb"{print $1}'); do
@@ -43,7 +43,7 @@ case "$1" in
         echo "All allowed USB drives have been cleared"
         ;;
     *)
-        echo "upanctl version $VERSION"
+        echo "udiskctl version $VERSION"
         echo "Current allowlist (Vendor:Product):"
         if [ -s "$WHITELIST" ]; then
             cat "$WHITELIST"
@@ -55,6 +55,6 @@ case "$1" in
         else
             echo "USB storage is globally disabled"
         fi
-        echo "Usage: upanctl {ok|unok|add|clean}"
+        echo "Usage: udiskctl {ok|unok|add|clean}"
         ;;
 esac
