@@ -10,6 +10,12 @@ Main Features:
 For installation and usage instructions, please refer to the project scripts and comments.
 
 
+Installation:
+
+wget https://github.com/xx025/upanctl/releases/latest/download/upanctl_installer.run
+chmod +x upanctl_installer.run
+sudo ./upanctl_installer.run
+
 Example usage:
 
 sudo upanctl ok      # Globally enable USB storage
