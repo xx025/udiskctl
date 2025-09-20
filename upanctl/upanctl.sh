@@ -3,6 +3,11 @@
 
 VERSION="1.0.0"
 
+if [ "$EUID" -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
 source /usr/local/bin/upanctl_common.sh
 
 ENABLE_FILE="/etc/upanctl/enable"
