@@ -3,11 +3,6 @@
 
 VERSION="1.0.0"
 
-if [ "$EUID" -ne 0 ]; then
-    echo "Please run as root"
-    exit 1
-fi
-
 source /usr/local/bin/upanctl_common.sh
 
 ENABLE_FILE="/etc/upanctl/enable"
@@ -49,6 +44,17 @@ case "$1" in
         ;;
     *)
         echo "upanctl version $VERSION"
+        echo "Current allowlist (Vendor:Product):"
+        if [ -s "$WHITELIST" ]; then
+            cat "$WHITELIST"
+        else
+            echo "(No devices in allowlist)"
+        fi
+        if [ -f "$ENABLE_FILE" ]; then
+            echo "USB storage is globally enabled"
+        else
+            echo "USB storage is globally disabled"
+        fi
         echo "Usage: upanctl {ok|unok|add|clean}"
         ;;
 esac
