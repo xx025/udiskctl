@@ -19,7 +19,6 @@ ACTION=="add", KERNEL=="sd?", SUBSYSTEMS=="usb", RUN+="/usr/local/bin/udiskctl_u
 EOF
 echo "udev rule created."
 
-
 echo "Installing upanctl scripts..."
 echo "install udiskctl.sh "
 install -m 755 udiskctl/udiskctl.sh /usr/local/bin/udiskctl
@@ -27,4 +26,11 @@ echo "install udiskctl_udev.sh "
 install -m 755 udiskctl/udiskctl_udev.sh /usr/local/bin/udiskctl_udev.sh
 echo "install udiskctl_common.sh "
 install -m 755 udiskctl/udiskctl_common.sh /usr/local/bin/udiskctl_common.sh
+
+udevadm control --reload
+udevadm trigger
+
+echo "udev rules reloaded."
+
 echo "udiskctl install to /usr/local/bin/ complete."
+echo "You can now use 'udiskctl' command to manage USB storage access."
