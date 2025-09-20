@@ -1,7 +1,7 @@
 #!/bin/bash
 # udiskctl command: Manage global switch and allowlist for USB drives
 
-VERSION="1.0.1"
+VERSION="1.0.2"
 
 source /usr/local/bin/udiskctl_common.sh
 
